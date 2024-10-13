@@ -1,0 +1,236 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/balls/protos/RobocupSoccerBall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.16944693122835797 0.12593822545919947 0.9774596159767829 1.8850562729932598
+  position 1.0423897731361065 -3.1965558234873805 1.1144542267135598
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 5 5
+}
+Robot {
+  translation 0 1.35 0.0415
+  rotation 0 1 0 0
+  children [
+    Solid {
+      translation 0 0 0.093
+      rotation 0 1 0 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0 -0.07 0
+          }
+          device [
+            RotationalMotor {
+              name "RM"
+            }
+          ]
+          endPoint Solid {
+            translation 0 -0.07 0
+            rotation 1 0 0 1.5708
+            children [
+              Camera {
+                translation 0 0 0.0275
+                rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.0944
+                name "CAM"
+                recognition Recognition {
+                  frameColor 0 0 0
+                  frameThickness 3
+                }
+              }
+              Shape {
+                appearance PBRAppearance {
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.03
+                }
+              }
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.1 0.1 0.1
+          }
+        }
+      ]
+      name "stand"
+    }
+    DEF Body Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.04
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.044997940532016646 2.6078655002678617e-07 0.025003394605023682
+        rotation -0.5742315208114607 -0.5840127336588353 -0.5737484530967306 4.199432662353454
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.044999808132245835 -1.0209167666070184e-06 0.025002435854469773
+        rotation -0.5742315183245167 -0.5840127417778336 -0.5737484473215222 4.199432685205977
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "drive_my_robot"
+}
+RobocupSoccerBall {
+  translation 0.46 -0.53 0.35
+}
+Robot {
+  translation 0.15 1 0.0415
+  children [
+    USE Body
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0 0.025
+        rotation 0.5739977040137759 0.583997664014016 0.5739977040137759 2.083185307179586
+        children [
+          USE wheel
+        ]
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0 0.025
+        rotation 0.5739977040137759 0.583997664014016 0.5739977040137759 2.083185307179586
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+  ]
+  name "Robot MK2"
+  boundingObject USE Body
+  physics Physics {
+  }
+}
+DEF Green Solid {
+  translation -1.02 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry Cone {
+        bottomRadius 0.1
+        height 0.3
+      }
+    }
+  ]
+  name "Green Cone"
+  recognitionColors [
+    0 0 0.1
+  ]
+}
+DEF Red Solid {
+  translation 0.8 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Cone {
+        bottomRadius 0.1
+        height 0.3
+      }
+    }
+  ]
+  name "Red Cone"
+  recognitionColors [
+    0 0 0.1
+  ]
+}

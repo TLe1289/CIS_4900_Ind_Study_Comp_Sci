@@ -1,0 +1,44 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/husarion/rosbot/protos/Rosbot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/balls/protos/RobocupSoccerBall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/samples/contests/robocup/protos/RobocupGoal.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.3051868352826809 0.17897862411874896 0.9353222159655471 2.1381814074937564
+  position 1.7207796493161587 -4.784078915399663 3.9229301223372586
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 7 7
+  floorTileSize 1 1
+}
+DEF Agent Rosbot {
+  translation 0 -2 0
+  rotation -1.5841375738446724e-05 1.5960034022612554e-05 0.9999999997471639 1.5700000002450407
+  controller "FAIRIS_Controller"
+  supervisor TRUE
+  cameraSlot [
+    GPS {
+    }
+    Astra {
+      name "camera"
+    }
+  ]
+}
+RobocupSoccerBall {
+  translation 0 0 0.1
+}
+RobocupGoal {
+  translation -2.3 0.5 0
+  rotation 0 0 1 -0.2
+}

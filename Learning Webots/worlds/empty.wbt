@@ -1,0 +1,83 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/husarion/rosbot/protos/Rosbot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/balls/protos/SoccerBall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/samples/contests/robocup/protos/RobocupGoal.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.08654082221931493 -0.0031026896248539854 0.9962434739594016 3.213030261279296
+  position 6.0889141820201225 -1.2385760962319552 0.654126840284637
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 -0.1 0
+  rotation 0 1 0 2.85387e-06
+  name "Arena"
+  floorSize 10 10
+  floorTileSize 3 3
+}
+DEF Agent Rosbot {
+  translation 0 -2.5 0
+  rotation -1.5841375738446724e-05 1.5960034022612554e-05 0.9999999997471639 1.5700000002450407
+  controller "Basic_FAIRIS_Controls"
+  supervisor TRUE
+  cameraSlot [
+    GPS {
+    }
+    Astra {
+      name "camera"
+    }
+  ]
+}
+SoccerBall {
+  translation -4 10 0.112058
+}
+DEF Cone Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry Cone {
+        bottomRadius 0.1
+        height 0.3
+      }
+    }
+  ]
+  name "Cone"
+  recognitionColors [
+    0 0 0.1
+  ]
+}
+Wall {
+  translation 10 10 -0.0400131
+  rotation -1.66574e-06 7.19235e-09 -1 -1.5708053071795867
+  name "Vertical"
+}
+Wall {
+  translation -1.91 2 0.499999
+  rotation 0.5773489358556708 0.5773509358554485 0.5773509358554485 2.0944
+  name "Horizontal"
+  size 0.25 1 5
+}
+RobocupGoal {
+  translation 10 0 0
+  rotation 0 0 1 -1.57
+}
+CardboardBox {
+  translation -13.99 -2.39 0.12
+  size 0.22 0.22 0.22
+}
